@@ -2,7 +2,7 @@
 {
     public class SavingAccount
     {
-        public int CashMoney { get; private set; } = 0;
+        private static int CashMoney = 0;
 
         public void Deposit(int amount)
         {
@@ -30,25 +30,29 @@
         {
             Console.WriteLine("1 to deposit money");
             Console.WriteLine("2 to withdraw money");
+            choice = Convert.ToInt32(Console.ReadLine());
 
-            int amount = 0;
+            int amount;
             switch (choice)
             {
                 case 1:
                     Console.WriteLine("Enter the amount to deposit: ");
                     amount = Convert.ToInt32(Console.ReadLine());
                     Deposit(amount);
+                    MainMenu.ShowMenu();
                     break;
 
                 case 2:
                     Console.WriteLine("Enter the amount to withdraw: ");
                     amount = Convert.ToInt32(Console.ReadLine());
                     RemoveCashMoney(amount);
+                    MainMenu.ShowMenu();
                     break;
 
                 default:
                     Console.WriteLine("Invalid choice");
                     break;
+                    
             }
         }
     }

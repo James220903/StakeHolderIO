@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-namespace StakeHolderIO
+﻿namespace StakeHolderIO
 {
     public class MainMenu
     {
@@ -82,9 +74,9 @@ namespace StakeHolderIO
             {
                 case 1:
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    SavingAccount.DisplaySavingAccountBalance();
-                    SavingAccount.SavingAccountOptions(option);
-                    
+                    SavingAccount savingAccount = new();
+                    savingAccount.DisplaySavingAccountBalance(); // Call the method on the instance
+                    savingAccount.SavingAccountOptions(option); // Call the method on the instance
                     break;
                 case 2:
                     // Code for bonds
@@ -100,7 +92,7 @@ namespace StakeHolderIO
         }
         public static void ShowMenu()
         {
-            var menu = new MainMenu();
+            MainMenu menu = new();
             menu.MainSelectMenu();
         }
     }
