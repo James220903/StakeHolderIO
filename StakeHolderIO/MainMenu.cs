@@ -12,7 +12,10 @@ namespace StakeHolderIO
     {
         private void MainSelectMenu()
         {
-            Console.WriteLine("Cash Money: 0");
+            Console.WriteLine(Console.Title = "StakeHolderIO");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Cash Money: " + MoneyCounter.CashMoney);
+            Console.ResetColor();
             Console.WriteLine("1. Buy Business");
             Console.WriteLine("2. Bank");
             Console.WriteLine("3. Exit");
@@ -78,7 +81,10 @@ namespace StakeHolderIO
             switch (option)
             {
                 case 1:
-                    // Code for saving account
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    SavingAccount.DisplaySavingAccountBalance();
+                    SavingAccount.SavingAccountOptions(option);
+                    
                     break;
                 case 2:
                     // Code for bonds
