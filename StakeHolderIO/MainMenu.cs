@@ -17,8 +17,9 @@
                     Console.WriteLine("2. Bank");
                     Console.WriteLine("3. Exit");
 
-                    if (!int.TryParse(Console.ReadLine(), out int option))
-                    {
+                    // Get user input
+                    if (!int.TryParse(Console.ReadLine(), out int option)) // 
+                    { // if the input is not a number, display an error message and continue to the next iteration of the loop
                         Console.WriteLine("Invalid input. Please enter a number.");
                         continue;
                     }
@@ -79,6 +80,7 @@
 
         private void Bank()
         {
+            Console.Clear();
             Console.WriteLine("1. Saving Account");
             Console.WriteLine("2. Bonds");
             Console.WriteLine("3. Back");
