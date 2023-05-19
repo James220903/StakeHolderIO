@@ -4,33 +4,48 @@
     {
         private void MainSelectMenu()
         {
-            Console.WriteLine(Console.Title = "StakeHolderIO");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Cash Money: " + MoneyCounter.CashMoney);
-            Console.ResetColor();
-            Console.WriteLine("1. Buy Business");
-            Console.WriteLine("2. Bank");
-            Console.WriteLine("3. Exit");
-
-            int option = Convert.ToInt32(Console.ReadLine());
-
-            switch (option)
+            while (true)
             {
-                case 1:
-                    BuyBusiness();
-                    break;
-                case 2:
-                    Bank();
-                    break;
-                case 3:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid option, please try again");
-                    MainSelectMenu();
-                    break;
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine(Console.Title = "StakeHolderIO");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Cash Money: " + MoneyCounter.CashMoney);
+                    Console.ResetColor();
+                    Console.WriteLine("1. Buy Business");
+                    Console.WriteLine("2. Bank");
+                    Console.WriteLine("3. Exit");
+
+                    if (!int.TryParse(Console.ReadLine(), out int option))
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number.");
+                        continue;
+                    }
+
+                    switch (option)
+                    {
+                        case 1:
+                            BuyBusiness();
+                            return; // assuming that BuyBusiness() will eventually lead back to this menu
+                        case 2:
+                            Bank();
+                            return; // assuming that Bank() will eventually lead back to this menu
+                        case 3:
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option, please try again");
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"An error occurred: {e.Message}\nPlease try again.");
+                }
             }
         }
+
 
         private void BuyBusiness()
         {
